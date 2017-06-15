@@ -42,9 +42,7 @@ w_o = tf.get_variable("o",shape=[HIDDEN2_SIZE,CLASSES],initializer=tf.contrib.la
 b_o = tf.Variable(tf.random_normal([CLASSES]))
 y = tf.matmul(hidden2,w_o) + b_o
 
-# cost = tf.reduce_mean(-y_*tf.log(y) - (1-y_)*tf.log(1-y))
-cost = tf.reduce_mean(tf.nn.softmax_cross_entropy_with_logits(
-    logits=y, labels=y_))
+cost = tf.reduce_mean(-y_*tf.log(y) - (1-y_)*tf.log(1-y))
 train = tf.train.AdamOptimizer(Learning_Rate).minimize(cost)
 
 prediction = tf.arg_max(y,1)
